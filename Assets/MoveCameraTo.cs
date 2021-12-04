@@ -14,11 +14,15 @@ public class MoveCameraTo : MonoBehaviour
         initOffset = transform.position - Vector3.zero;
     }
 
+    public void StopMoving()
+    {
+        StopAllCoroutines();
+    }
 
     public void MoveTo(Vector3 target)
     {
         var to = initOffset + target;
-        StopAllCoroutines();
+        StopMoving();
         StartCoroutine(MoveTo__(to));
     }
 
